@@ -6,6 +6,8 @@ public class PlayerControl : MonoBehaviour
 {
     private CharacterController _controller;
     private PlayerStats _stats;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera closedCamera;
 
     private void Start()
     {
@@ -52,12 +54,16 @@ public class PlayerControl : MonoBehaviour
     {
         Debug.Log(nameof(CloseEyes));
         PlayerCondition.eyesClosed = true;
+        mainCamera.enabled = false;
+        closedCamera.enabled = true;
     }
 
     private void OpenEyes()
     {
         Debug.Log(nameof(OpenEyes));
         PlayerCondition.eyesClosed = false;
+        closedCamera.enabled = false;
+        mainCamera.enabled = true;
     }
 
     public void TakeTickleHit(float damage) => TakeDamage(damage);

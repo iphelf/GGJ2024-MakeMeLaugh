@@ -10,7 +10,6 @@ public class BossControl : MonoBehaviour
     private CharacterController _controller;
     private Animator _animator;
     private BossStats _stats;
-    private Transform _cameraTransform;
     private PlayerControl _player;
 
     private void Start()
@@ -18,7 +17,6 @@ public class BossControl : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _stats = GetComponent<BossStats>();
-        _cameraTransform = Camera.main!.transform;
         _player = _stats.playerTransform.GetComponent<PlayerControl>();
 
         tickler.OnHitPlayer += OnTickleHit;
@@ -107,7 +105,7 @@ public class BossControl : MonoBehaviour
             wordBullet.SetWord(token, out var width);
             wordBullet.SetDamage(_stats.jokeDamage / tokens.Length);
             go.transform.Translate(0.0f, 0.0f, -width / 2.0f);
-            if (Vector3.Dot(go.transform.forward, _cameraTransform.right) > 0.0f)
+            if (Vector3.Dot(go.transform.forward, Vector3.right) > 0.0f)
                 // so that text is always in a readable orientation
                 wordBullet.FlipUpsideDown();
             wordBullet.Shoot(_stats.jokeSpeed);
