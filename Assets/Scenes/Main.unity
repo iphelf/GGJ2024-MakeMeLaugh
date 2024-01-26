@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 6152741}
   - component: {fileID: 6152742}
   - component: {fileID: 6152743}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,14 +148,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6152738}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.08, z: 1}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: 5.5, y: 1.08, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 566557421}
   m_Father: {fileID: 1431821629}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!143 &6152740
 CharacterController:
   m_ObjectHideFlags: 0
@@ -233,6 +233,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  startingStage: 1
 --- !u!95 &6152743
 Animator:
   serializedVersion: 7
@@ -268,8 +269,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  tickleDamage: 50
-  attackRange: 1.5
+  tickleDamage: 100
+  tickleRange: 1.5
+  jokes: {fileID: 11400000, guid: e0b29851c6b6b424f960c5d7a5690a9a, type: 2}
+  jokeDamage: 150
+  jokeSpeed: 5
+  jokeTokenSpace: 0.1
+  jokeTokenPrefab: {fileID: 8568045239883146484, guid: 918dcf43f3af2114681486c7f634f433,
+    type: 3}
+  jokePreparationTime: 0.5
+  jokeRecoveryTime: 0.5
 --- !u!1 &82480895
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,8 +307,8 @@ Transform:
   m_GameObject: {fileID: 82480895}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 12}
+  m_LocalPosition: {x: -8.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1131861299}
@@ -802,8 +811,8 @@ Transform:
   m_GameObject: {fileID: 1009449082}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 12}
+  m_LocalPosition: {x: 8.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1131861299}
@@ -909,8 +918,8 @@ Transform:
   m_GameObject: {fileID: 1068777310}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 5.5000005}
-  m_LocalScale: {x: 1, y: 1, z: 16}
+  m_LocalPosition: {x: 0, y: 1, z: 5.5000005}
+  m_LocalScale: {x: 1, y: 2, z: 16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1131861299}
@@ -1104,8 +1113,8 @@ Transform:
   m_GameObject: {fileID: 1096906832}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: -5.4999995}
-  m_LocalScale: {x: 1, y: 1, z: 16}
+  m_LocalPosition: {x: 0, y: 1, z: -5.4999995}
+  m_LocalScale: {x: 1, y: 2, z: 16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1131861299}
@@ -1297,7 +1306,7 @@ GameObject:
   - component: {fileID: 1596256009}
   - component: {fileID: 1596256008}
   - component: {fileID: 1596256011}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Tickler
   m_TagString: Untagged
   m_Icon: {fileID: 0}

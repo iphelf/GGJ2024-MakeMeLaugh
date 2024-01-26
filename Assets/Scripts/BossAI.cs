@@ -15,12 +15,26 @@ public class BossAI : MonoBehaviour
     private BossStats _stats;
     private Stage _stage;
 
+    private readonly Stage[] _allStages =
+    {
+        new TickleOnlyStage(), new JokeOnlyStage(),
+    };
+
+    public enum StageType
+    {
+        TickerOnly = 0,
+        JokeOnly = 1,
+        ActOnly = 2,
+        All = 3,
+    }
+
+    public StageType startingStage;
+
     private void Start()
     {
         _control = GetComponent<BossControl>();
         _stats = GetComponent<BossStats>();
-        _stage = new TickleOnlyStage();
-        // _stage = new JokeOnlyStage();
+        _stage = _allStages[(int)startingStage];
     }
 
     private abstract class Stage
@@ -35,7 +49,7 @@ public class BossAI : MonoBehaviour
             if (!self._control.NoAction) return;
 
             Vector3 direction = self.opponent.position - self.transform.position;
-            bool withinAttackRange = direction.sqrMagnitude <= self._stats.attackRange * self._stats.attackRange;
+            bool withinAttackRange = direction.sqrMagnitude <= self._stats.tickleRange * self._stats.tickleRange;
             if (withinAttackRange)
             {
                 self._control.BeginTickle();
@@ -52,6 +66,11 @@ public class BossAI : MonoBehaviour
     {
         public override void Update(BossAI self)
         {
+            self._control.LookAt(self.opponent.position);
+
+            if (!self._control.NoAction) return;
+
+            self._control.BeginJoke();
         }
     }
 

@@ -59,4 +59,9 @@ public class PlayerControl : MonoBehaviour
     {
         _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
     }
+
+    public void TakeJokeHit(float damage)
+    {
+        _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
+    }
 }
