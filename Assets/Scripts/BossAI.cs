@@ -4,7 +4,7 @@
 [RequireComponent(typeof(BossStats))]
 public class BossAI : MonoBehaviour
 {
-    [SerializeField] private Transform opponent;
+    private Transform _opponent;
     [SerializeField] private AnimationCurve approachWeight;
     [SerializeField] private AnimationCurve tickleWeight;
     public float chaseProbability = 0.5f;
@@ -17,7 +17,9 @@ public class BossAI : MonoBehaviour
 
     private readonly Stage[] _allStages =
     {
-        new TickleOnlyStage(), new JokeOnlyStage(),
+        new TickleOnlyStage(),
+        new JokeOnlyStage(),
+        new ActOnlyStage(),
     };
 
     public enum StageType
@@ -34,6 +36,7 @@ public class BossAI : MonoBehaviour
     {
         _control = GetComponent<BossControl>();
         _stats = GetComponent<BossStats>();
+        _opponent = _stats.playerTransform;
         _stage = _allStages[(int)startingStage];
     }
 
@@ -48,7 +51,7 @@ public class BossAI : MonoBehaviour
         {
             if (!self._control.NoAction) return;
 
-            Vector3 direction = self.opponent.position - self.transform.position;
+            Vector3 direction = self._opponent.position - self.transform.position;
             bool withinAttackRange = direction.sqrMagnitude <= self._stats.tickleRange * self._stats.tickleRange;
             if (withinAttackRange)
             {
@@ -66,11 +69,23 @@ public class BossAI : MonoBehaviour
     {
         public override void Update(BossAI self)
         {
-            self._control.LookAt(self.opponent.position);
+            self._control.LookAt(self._opponent.position);
 
             if (!self._control.NoAction) return;
 
             self._control.BeginJoke();
+        }
+    }
+
+    private class ActOnlyStage : Stage
+    {
+        public override void Update(BossAI self)
+        {
+            self._control.LookAtStamp(self._opponent.position);
+
+            if (!self._control.NoAction) return;
+
+            self._control.BeginAct();
         }
     }
 

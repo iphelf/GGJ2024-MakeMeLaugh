@@ -32,6 +32,7 @@ public class PlayerControl : MonoBehaviour
         if (!Mathf.Approximately(direction.sqrMagnitude, 0.0f))
         {
             _controller.SimpleMove(_stats.speed * direction.normalized);
+            transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 
@@ -59,14 +60,22 @@ public class PlayerControl : MonoBehaviour
         PlayerCondition.eyesClosed = false;
     }
 
-    public void TakeTickleHit(float damage)
-    {
-        _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
-    }
+    public void TakeTickleHit(float damage) => TakeDamage(damage);
 
     public void TakeJokeHit(float damage)
     {
         if (PlayerCondition.earsHeld) return;
+        TakeDamage(damage);
+    }
+
+    public void TakeActHit(float damage)
+    {
+        if (PlayerCondition.eyesClosed) return;
+        TakeDamage(damage);
+    }
+
+    private void TakeDamage(float damage)
+    {
         _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
     }
 }

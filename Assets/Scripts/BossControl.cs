@@ -11,6 +11,7 @@ public class BossControl : MonoBehaviour
     private Animator _animator;
     private BossStats _stats;
     private Transform _cameraTransform;
+    private PlayerControl _player;
 
     private void Start()
     {
@@ -18,11 +19,17 @@ public class BossControl : MonoBehaviour
         _animator = GetComponent<Animator>();
         _stats = GetComponent<BossStats>();
         _cameraTransform = Camera.main!.transform;
+        _player = _stats.playerTransform.GetComponent<PlayerControl>();
 
         tickler.OnHitPlayer += OnTickleHit;
     }
 
     public void LookAt(Vector3 position)
+    {
+        transform.rotation = Quaternion.LookRotation(position - transform.position);
+    }
+
+    public void LookAtStamp(Vector3 position)
     {
         transform.rotation = Quaternion.LookRotation(position - transform.position);
     }
@@ -33,7 +40,7 @@ public class BossControl : MonoBehaviour
         _controller.SimpleMove(_stats.speed * direction.normalized);
     }
 
-    public bool NoAction => !Tickling && !Joking;
+    public bool NoAction => !Tickling && !Joking && !Acting;
 
     #region Tickle
 
@@ -114,6 +121,68 @@ public class BossControl : MonoBehaviour
     private void OnJokeFinish()
     {
         Joking = false;
+    }
+
+    #endregion
+
+    #region Act
+
+    private static readonly int AnimParamAct = Animator.StringToHash("Act");
+
+    public bool Acting { get; private set; }
+    private float _actDuration;
+
+    /// minDuration = -1, maxDuration = -1 => duration = random(stats)
+    /// minDuration > 0, maxDuration = -1 => duration = minDuration
+    /// minDuration > 0, maxDuration > 0 => duration = random(min, max)
+    public void BeginAct(float minDuration = -1.0f, float maxDuration = -1.0f)
+    {
+        _animator.SetBool(AnimParamAct, true);
+        Acting = true;
+        if (minDuration < 0.0f) _actDuration = Random.Range(_stats.actDurationMin, _stats.actDurationMax);
+        else if (maxDuration < 0.0f) _actDuration = minDuration;
+        else _actDuration = Random.Range(minDuration, maxDuration);
+    }
+
+    private void OnAct()
+    {
+        Debug.Log(nameof(OnAct));
+        StartCoroutine(Act());
+    }
+
+    private IEnumerator Act()
+    {
+        TryActDamage();
+        float remainingTime = _actDuration;
+        while (remainingTime > 0.0f)
+        {
+            float tick = _stats.actDamageTick;
+            yield return new WaitForSeconds(tick);
+            TryActDamage();
+            remainingTime -= tick;
+        }
+
+        OnActFinish();
+    }
+
+    private void TryActDamage()
+    {
+        Vector3 direction = _stats.playerTransform.position - transform.position;
+        direction.Normalize();
+        float angle = Vector3.Angle(transform.forward, direction);
+        if (angle * 2.0f <= _stats.actFovAngle)
+        {
+            float alignment = Vector3.Dot(_stats.playerTransform.forward, -transform.forward);
+            alignment = Mathf.Min(1.0f, alignment + Mathf.Cos(40.0f / 180.0f * Mathf.PI));
+            if (alignment < 0.0f) return;
+            _player.TakeActHit(_stats.actDamagePerTick * alignment);
+        }
+    }
+
+    private void OnActFinish()
+    {
+        _animator.SetBool(AnimParamAct, false);
+        Acting = false;
     }
 
     #endregion
