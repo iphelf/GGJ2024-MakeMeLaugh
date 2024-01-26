@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 direction = new(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         if (!Mathf.Approximately(direction.sqrMagnitude, 0.0f))
         {
-            _controller.SimpleMove(speed * direction);
+            _controller.SimpleMove(speed * direction.normalized);
         }
     }
 
