@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 6152738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -0.000005900859, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: 1.08, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -215,30 +215,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   approachWeight:
     serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  tickleWeight:
-    serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 200
+      inSlope: 0
+      outSlope: -7.5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 50
+      inSlope: -7.5
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   chaseProbability: 0.5
   jokeWeight:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   actWeight:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startingStage: 2
+  startingStage: 3
 --- !u!95 &6152743
 Animator:
   serializedVersion: 7
@@ -277,6 +325,8 @@ MonoBehaviour:
   playerTransform: {fileID: 1071323568}
   tickleDamage: 100
   tickleRange: 1.5
+  chasingDurationMin: 3
+  chasingDurationMax: 8
   jokes: {fileID: 11400000, guid: e0b29851c6b6b424f960c5d7a5690a9a, type: 2}
   jokeDamage: 150
   jokeSpeed: 5
@@ -286,7 +336,7 @@ MonoBehaviour:
   jokePreparationTime: 0.5
   jokeRecoveryTime: 0.5
   actFovAngle: 80
-  actDurationMin: 4
+  actDurationMin: 5
   actDurationMax: 8
   actDamageTick: 0.1
   actDamagePerTick: 5

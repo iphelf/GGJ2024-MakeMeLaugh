@@ -118,6 +118,7 @@ public class BossControl : MonoBehaviour
 
     private void OnJokeFinish()
     {
+        _animator.SetBool(AnimParamJoke, false);
         Joking = false;
     }
 
