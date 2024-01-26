@@ -1,14 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PlayerStats))]
 public class PlayerControl : MonoBehaviour
 {
     private CharacterController _controller;
-    public float speed = 5.0f;
+    private PlayerStats _stats;
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _stats = GetComponent<PlayerStats>();
     }
 
     private void Update()
@@ -29,7 +31,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 direction = new(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         if (!Mathf.Approximately(direction.sqrMagnitude, 0.0f))
         {
-            _controller.SimpleMove(speed * direction.normalized);
+            _controller.SimpleMove(_stats.speed * direction.normalized);
         }
     }
 
@@ -51,5 +53,10 @@ public class PlayerControl : MonoBehaviour
     private void OpenEyes()
     {
         Debug.Log(nameof(OpenEyes));
+    }
+
+    public void TakeTickleHit(float damage)
+    {
+        _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
     }
 }

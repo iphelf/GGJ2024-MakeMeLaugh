@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(BossControl))]
+[RequireComponent(typeof(BossStats))]
 public class BossAI : MonoBehaviour
 {
     [SerializeField] private Transform opponent;
@@ -11,11 +12,12 @@ public class BossAI : MonoBehaviour
     [SerializeField] private AnimationCurve actWeight;
 
     private BossControl _control;
-    public float attackRange = 1.5f;
+    private BossStats _stats;
 
     private void Start()
     {
         _control = GetComponent<BossControl>();
+        _stats = GetComponent<BossStats>();
     }
 
     private void Update()
@@ -23,7 +25,7 @@ public class BossAI : MonoBehaviour
         if (!_control.NoAction) return;
 
         Vector3 direction = opponent.position - transform.position;
-        bool withinAttackRange = direction.sqrMagnitude <= attackRange * attackRange;
+        bool withinAttackRange = direction.sqrMagnitude <= _stats.attackRange * _stats.attackRange;
         if (withinAttackRange)
         {
             _control.BeginTickle();
