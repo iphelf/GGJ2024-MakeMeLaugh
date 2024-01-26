@@ -44,7 +44,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869160658783200830}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -101,9 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02c4b5c722c5b7048a9cfd8631a88342, type: 2}
   m_sharedMaterial: {fileID: -8590863800884711046, guid: 02c4b5c722c5b7048a9cfd8631a88342,
@@ -228,7 +226,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 3448292796066644790}
   textRect: {fileID: 8136019007693780885}
+  textRenderer: {fileID: 2638268814001976505}
   backgroundTransform: {fileID: 4256257626407614821}
+  backgroundRenderer: {fileID: 8667831141919655298}
   boxCollider: {fileID: 5666694794153227531}
 --- !u!65 &5666694794153227531
 BoxCollider:
@@ -326,7 +326,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8924682306200933755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

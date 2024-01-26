@@ -5,7 +5,9 @@ public class WordBullet : MonoBehaviour
 {
     [SerializeField] private TextMeshPro text;
     [SerializeField] private RectTransform textRect;
+    [SerializeField] private MeshRenderer textRenderer;
     [SerializeField] private Transform backgroundTransform;
+    [SerializeField] private MeshRenderer backgroundRenderer;
     [SerializeField] private BoxCollider boxCollider;
 
     private float _damage;
@@ -42,7 +44,21 @@ public class WordBullet : MonoBehaviour
 
     public void FlipUpsideDown() => textRect.Rotate(0.0f, 0.0f, 180.0f);
 
-    private void Update() => transform.Translate(0.0f, 0.0f, _speed * Time.deltaTime);
+    private void Update()
+    {
+        transform.Translate(0.0f, 0.0f, _speed * Time.deltaTime);
+
+        if (PlayerCondition.earsHeld || text.text.Length == 0)
+        {
+            backgroundRenderer.enabled = false;
+            textRenderer.enabled = false;
+        }
+        else
+        {
+            backgroundRenderer.enabled = true;
+            textRenderer.enabled = true;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

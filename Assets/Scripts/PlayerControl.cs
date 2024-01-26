@@ -38,21 +38,25 @@ public class PlayerControl : MonoBehaviour
     private void HoldEars()
     {
         Debug.Log(nameof(HoldEars));
+        PlayerCondition.earsHeld = true;
     }
 
     private void ReleaseEars()
     {
         Debug.Log(nameof(ReleaseEars));
+        PlayerCondition.earsHeld = false;
     }
 
     private void CloseEyes()
     {
         Debug.Log(nameof(CloseEyes));
+        PlayerCondition.eyesClosed = true;
     }
 
     private void OpenEyes()
     {
         Debug.Log(nameof(OpenEyes));
+        PlayerCondition.eyesClosed = false;
     }
 
     public void TakeTickleHit(float damage)
@@ -62,6 +66,7 @@ public class PlayerControl : MonoBehaviour
 
     public void TakeJokeHit(float damage)
     {
+        if (PlayerCondition.earsHeld) return;
         _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
     }
 }
