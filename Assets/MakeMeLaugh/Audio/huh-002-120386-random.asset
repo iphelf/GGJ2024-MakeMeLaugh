@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-4809675497542788467
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_6_{-4809675497542788467}
+  m_AudioClip: {fileID: 8300000, guid: 60926522db90ff847a608e1e14b8b750, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4625828919940644537
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_1_{-4625828919940644537}
+  m_AudioClip: {fileID: 8300000, guid: 2f8f2bfe6049b2a42b6d3c02e4667554, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4156715851962584656
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_4_{-4156715851962584656}
+  m_AudioClip: {fileID: 8300000, guid: e721095619114414aa6d1a7acf5831ad, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3908114761095907297
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_2_{-3908114761095907297}
+  m_AudioClip: {fileID: 8300000, guid: 481371b4e720144438523e1400a3ed5c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2885868133138289458
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_3_{2885868133138289458}
+  m_AudioClip: {fileID: 8300000, guid: 58ef4fb15dcc720498c43dd65cf0cb27, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386-random
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -4625828919940644537}
+  - {fileID: -3908114761095907297}
+  - {fileID: 2885868133138289458}
+  - {fileID: -4156715851962584656}
+  - {fileID: 7228634697055792090}
+  - {fileID: -4809675497542788467}
+  - {fileID: 8096086887156682823}
+  m_AvoidRepeatingLast: 3
+  m_PlaybackMode: 2
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 1
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7228634697055792090
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_5_{7228634697055792090}
+  m_AudioClip: {fileID: 8300000, guid: 8be61d409ab29084e85de37ce7610517, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &8096086887156682823
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: huh-002-120386_7_{8096086887156682823}
+  m_AudioClip: {fileID: 8300000, guid: 3ba7a2ef8b64d6c44919bf45cc9503e3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

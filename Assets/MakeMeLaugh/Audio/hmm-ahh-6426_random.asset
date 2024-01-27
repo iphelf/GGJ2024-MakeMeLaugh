@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8561806219404395803
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: hmm-ahh-6426_3_{-8561806219404395803}
+  m_AudioClip: {fileID: 8300000, guid: eb94d79e994d624439b9903c635122e9, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-7400733704618120798
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: hmm-ahh-6426_2_{-7400733704618120798}
+  m_AudioClip: {fileID: 8300000, guid: 4c7e086a1193e0b4db924c313f2d4b01, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5142668995911710200
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: hmm-ahh-6426_1_{5142668995911710200}
+  m_AudioClip: {fileID: 8300000, guid: 700de7fb2f46c87439d9e4389314ce1c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: hmm-ahh-6426_random
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 5142668995911710200}
+  - {fileID: -7400733704618120798}
+  - {fileID: -8561806219404395803}
+  - {fileID: 8315320899019755388}
+  m_AvoidRepeatingLast: 2
+  m_PlaybackMode: 2
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 1
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &8315320899019755388
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: hmm-ahh-6426_4_{8315320899019755388}
+  m_AudioClip: {fileID: 8300000, guid: 1f5dcda6b85b8fc4bb8dbd83985e4eab, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
