@@ -16,6 +16,7 @@ public class BossAI : MonoBehaviour
 
     private readonly Stage[] _allStages =
     {
+        new NoopStage(),
         new TickleOnlyStage(),
         new JokeOnlyStage(),
         new ActOnlyStage(),
@@ -24,18 +25,20 @@ public class BossAI : MonoBehaviour
 
     private enum ActionType
     {
-        Ticker = 0,
-        Joke = 1,
-        Act = 2,
-        Approach = 3,
+        None = 0,
+        Ticker = 1,
+        Joke = 2,
+        Act = 3,
+        Approach = 4,
     }
 
     public enum StageType
     {
+        None = 0,
         TickerOnly = ActionType.Ticker,
         JokeOnly = ActionType.Joke,
         ActOnly = ActionType.Act,
-        All = 3,
+        All = 4,
     }
 
     public StageType startingStage;
@@ -53,6 +56,13 @@ public class BossAI : MonoBehaviour
         public abstract void Update(BossAI self);
     }
 
+    private class NoopStage : Stage
+    {
+        public override void Update(BossAI self)
+        {
+        }
+    }
+
     private class TickleOnlyStage : Stage
     {
         public override void Update(BossAI self)
@@ -63,12 +73,12 @@ public class BossAI : MonoBehaviour
             bool withinAttackRange = direction.sqrMagnitude <= self._stats.tickleRange * self._stats.tickleRange;
             if (withinAttackRange)
             {
+                self.OnChaseFinish();
                 self._control.BeginTickle();
             }
-            else
+            else if (!self._isChasing)
             {
-                direction.Normalize();
-                self._control.Move(direction);
+                self.BeginChase();
             }
         }
     }
@@ -111,7 +121,7 @@ public class BossAI : MonoBehaviour
 
     private class AllInOneStage : Stage
     {
-        private bool _isChasing;
+        private float _remainingDecisionTime;
         private float _remainingChasingTime;
 
         public override void Update(BossAI self)
@@ -121,53 +131,60 @@ public class BossAI : MonoBehaviour
             Vector3 direction = opponentPosition - self.transform.position;
             bool withinAttackRange = direction.sqrMagnitude <= self._stats.tickleRange * self._stats.tickleRange;
 
-            if (_isChasing)
+            if (self._isChasing)
             {
-                if (withinAttackRange)
-                {
-                    OnChaseFinish();
-                    self._control.BeginTickle();
-                    return;
-                }
-
-                direction.Normalize();
-                self._control.Move(direction);
                 _remainingChasingTime -= Time.deltaTime;
-                if (_remainingChasingTime <= 0.0f)
-                    OnChaseFinish();
+                if (withinAttackRange || _remainingChasingTime <= 0.0f)
+                    self.OnChaseFinish();
             }
 
-            if (!self._control.NoAction) return;
-
-            ActionType task = self.GenerateNextTask();
-            switch (task)
+            if (withinAttackRange)
             {
-                case ActionType.Joke:
-                    self._control.BeginJoke();
-                    break;
-                case ActionType.Act:
-                    self._control.BeginAct();
-                    break;
-                default:
-                    BeginChase(self);
-                    break;
+                if (!self._control.Tickling)
+                    self._control.BeginTickle();
+            }
+            else
+            {
+                _remainingDecisionTime -= Time.deltaTime;
+                if (_remainingDecisionTime <= 0.0f)
+                {
+                    if (!PlayerCondition.earsHeld && !self._control.Joking)
+                        self._control.BeginJoke();
+                    if (!PlayerCondition.eyesClosed && !self._control.Acting)
+                        self._control.BeginAct();
+                    if (!self._isChasing && self.GenerateNextTask() == ActionType.Approach)
+                        BeginChase(self);
+                    _remainingDecisionTime = self._stats.decisionCoolDown;
+                }
             }
         }
 
         private void BeginChase(BossAI self)
         {
-            _isChasing = true;
+            self.BeginChase();
             _remainingChasingTime = Random.Range(self._stats.chasingDurationMin, self._stats.chasingDurationMax);
         }
+    }
 
-        private void OnChaseFinish()
-        {
-            _isChasing = false;
-        }
+    private bool _isChasing;
+
+    private void BeginChase()
+    {
+        _isChasing = true;
+        _control.BeginChase();
+    }
+
+    private void OnChaseFinish()
+    {
+        _isChasing = false;
+        _control.EndChase();
     }
 
     private void Update()
     {
+        if (_isChasing)
+            _control.Move(_opponent.position - transform.position);
+
         _stage?.Update(this);
     }
 }

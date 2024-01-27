@@ -4,6 +4,8 @@ using UnityEngine;
 public class BossStats : MonoBehaviour
 {
     [Header("General")] public float speed = 3.5f;
+    public float decisionCoolDown = 3.0f;
+    public float stepsCoolDown = 0.3f;
     public Transform playerTransform;
     [Header("Tickling")] public float tickleDamage = 100.0f;
     public float tickleRange = 1.5f;

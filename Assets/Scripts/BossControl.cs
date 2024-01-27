@@ -32,6 +32,18 @@ public class BossControl : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(position - transform.position);
     }
 
+    private static readonly int AnimParamSteps = Animator.StringToHash("Steps");
+
+    public void BeginChase()
+    {
+        _animator.SetBool(AnimParamSteps, true);
+    }
+
+    public void EndChase()
+    {
+        _animator.SetBool(AnimParamSteps, false);
+    }
+
     public void Move(Vector3 direction)
     {
         transform.rotation = Quaternion.LookRotation(direction);
