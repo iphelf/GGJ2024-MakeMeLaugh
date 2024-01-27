@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Entry.unity
+    path: Assets/MakeMeLaugh/Scenes/Entry.unity
     guid: e72345f5fe3b5804492a1e5cf682329b
   - enabled: 1
-    path: Assets/Scenes/Battle.unity
+    path: Assets/MakeMeLaugh/Scenes/Battle.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/End.unity
+    path: Assets/MakeMeLaugh/Scenes/End.unity
     guid: 3e02334c75d96024d8caabcbf47fce18
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

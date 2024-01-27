@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace So
+namespace MakeMeLaugh.Scripts.So
 {
     [CreateAssetMenu(fileName = "jokes", menuName = "ScriptableObjects/JokesBank")]
     public class JokesBankSo : ScriptableObject
