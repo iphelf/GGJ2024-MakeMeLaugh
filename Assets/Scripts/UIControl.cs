@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class UIControl : MonoBehaviour
 {
-    [Header("Stats")] [SerializeField] private GameStats gameStats;
-    [SerializeField] private PlayerStats playerStats;
+    [Header("Stats")] [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private BattleStats battleStats;
 
     [Header("Widgets")] [SerializeField] private TMP_Text currentScore;
     [SerializeField] private TMP_Text bestScore;
     [SerializeField] private Slider laughBar;
+    [SerializeField] private TMP_Text remainingTime;
 
     private void Start()
     {
@@ -18,8 +19,13 @@ public class UIControl : MonoBehaviour
 
     private void Update()
     {
-        currentScore.text = Mathf.RoundToInt(gameStats.currentScore).ToString();
-        bestScore.text = Mathf.RoundToInt(gameStats.bestScore).ToString();
+        currentScore.text = Mathf.RoundToInt(playerStats.currentScore).ToString();
         laughBar.value = playerStats.currentLaugh;
+        bestScore.text = Mathf.RoundToInt(GameStats.bestScore).ToString();
+        remainingTime.text = Mathf.RoundToInt(battleStats.remainingTime).ToString();
+    }
+
+    public void ShowWelcome()
+    {
     }
 }

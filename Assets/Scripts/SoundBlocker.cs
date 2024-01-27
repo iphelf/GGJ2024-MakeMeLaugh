@@ -8,9 +8,10 @@ public class SoundBlocker : MonoBehaviour
 
     private void Update()
     {
+        bool notBlocked = !(PlayerCondition.earsHeld || PlayerCondition.moving);
         foreach (var soundMaker in soundMakers)
-            soundMaker.enabled = !PlayerCondition.earsHeld;
+            soundMaker.enabled = notBlocked;
         foreach (var soundSource in soundSources)
-            soundSource.SetActive(!PlayerCondition.earsHeld);
+            soundSource.SetActive(notBlocked);
     }
 }

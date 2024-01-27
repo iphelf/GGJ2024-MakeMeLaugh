@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(GameStats))]
-public class GameControl : MonoBehaviour
+public static class GameControl
 {
-    private GameStats _stats;
-    [SerializeField] private PlayerStats playerStats;
-
-    private void Start()
+    public static void OpenBattle()
     {
-        _stats = GetComponent<GameStats>();
+        SceneManager.LoadScene("Battle");
     }
 
-    private void Update()
+    public static void OpenEnd()
     {
-        _stats.currentScore += _stats.gainRate.Evaluate(playerStats.currentLaugh) * Time.deltaTime;
+        SceneManager.LoadScene("End");
+    }
+
+    public static void OpenEntry()
+    {
+        SceneManager.LoadScene("Entry");
     }
 }

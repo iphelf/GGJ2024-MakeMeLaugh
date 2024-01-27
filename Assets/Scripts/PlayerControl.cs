@@ -13,6 +13,9 @@ public class PlayerControl : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _stats = GetComponent<PlayerStats>();
+        PlayerCondition.eyesClosed = false;
+        PlayerCondition.earsHeld = false;
+        PlayerCondition.moving = false;
     }
 
     private void Update()
@@ -26,7 +29,9 @@ public class PlayerControl : MonoBehaviour
             CloseEyes();
         if (Input.GetKeyUp(KeyCode.Space))
             OpenEyes();
+
         DecreaseLaugh(_stats.laughAttenuation * Time.deltaTime);
+        _stats.currentScore += _stats.gainRate.Evaluate(_stats.currentLaugh) * Time.deltaTime;
     }
 
     private void HandleMovement()
@@ -36,7 +41,10 @@ public class PlayerControl : MonoBehaviour
         {
             _controller.SimpleMove(_stats.speed * direction.normalized);
             transform.rotation = Quaternion.LookRotation(direction);
+            PlayerCondition.moving = true;
         }
+        else
+            PlayerCondition.moving = false;
     }
 
     private void HoldEars()
