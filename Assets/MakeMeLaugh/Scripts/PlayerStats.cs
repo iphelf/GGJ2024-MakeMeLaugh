@@ -17,5 +17,6 @@ namespace MakeMeLaugh.Scripts
         public AnimationCurve gainRate = AnimationCurve.EaseInOut(0.0f, 10.0f, 300.0f, -30.0f);
         public float currentScore = 0.0f;
         public float speed = 5.0f;
+        public float lightAdaptability = 3.0f;
     }
 }

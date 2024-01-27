@@ -7438,6 +7438,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   currentScore: 0
   speed: 5
+  lightAdaptability: 3
 --- !u!81 &1071323572
 AudioListener:
   m_ObjectHideFlags: 0
@@ -14055,21 +14056,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 935432653282398304, guid: 783a8337a709bbd4e9de8c4cd0810e07,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.25367293
-      objectReference: {fileID: 0}
-    - target: {fileID: 935432653282398304, guid: 783a8337a709bbd4e9de8c4cd0810e07,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.25367293
-      objectReference: {fileID: 0}
-    - target: {fileID: 935432653282398304, guid: 783a8337a709bbd4e9de8c4cd0810e07,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.84276724
-      objectReference: {fileID: 0}
     - target: {fileID: 1329393604614938204, guid: 783a8337a709bbd4e9de8c4cd0810e07,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -14449,21 +14435,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8793555508907376646, guid: 783a8337a709bbd4e9de8c4cd0810e07,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.40396184
-      objectReference: {fileID: 0}
-    - target: {fileID: 8793555508907376646, guid: 783a8337a709bbd4e9de8c4cd0810e07,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.684
-      objectReference: {fileID: 0}
-    - target: {fileID: 8793555508907376646, guid: 783a8337a709bbd4e9de8c4cd0810e07,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.13543202
       objectReference: {fileID: 0}
     - target: {fileID: 9028167731778649432, guid: 783a8337a709bbd4e9de8c4cd0810e07,
         type: 3}
