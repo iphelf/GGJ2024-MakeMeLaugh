@@ -6,12 +6,14 @@ namespace MakeMeLaugh.Scripts
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(BossStats))]
+    [RequireComponent(typeof(BossVoice))]
     public class BossControl : MonoBehaviour
     {
         [SerializeField] private HitBox tickler;
         private CharacterController _controller;
         private Animator _animator;
         private BossStats _stats;
+        private BossVoice _voice;
         private PlayerControl _player;
 
         private void Start()
@@ -19,6 +21,7 @@ namespace MakeMeLaugh.Scripts
             _controller = GetComponent<CharacterController>();
             _animator = GetComponent<Animator>();
             _stats = GetComponent<BossStats>();
+            _voice = GetComponent<BossVoice>();
             _player = _stats.playerTransform.GetComponent<PlayerControl>();
 
             tickler.OnHitPlayer += OnTickleHit;
@@ -105,6 +108,7 @@ namespace MakeMeLaugh.Scripts
         private IEnumerator Joke()
         {
             yield return new WaitForSeconds(_stats.jokePreparationTime);
+            int voidId = _voice.StartNew();
 
             int index = Random.Range(0, _stats.jokes.jokes.Count);
             string joke = _stats.jokes.jokes[index];
@@ -126,6 +130,7 @@ namespace MakeMeLaugh.Scripts
                 yield return new WaitForSeconds((width + _stats.jokeTokenSpace) / _stats.jokeSpeed);
             }
 
+            _voice.FadeOut(voidId);
             yield return new WaitForSeconds(_stats.jokeRecoveryTime);
             OnJokeFinish();
         }

@@ -5,18 +5,22 @@ namespace MakeMeLaugh.Scripts
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(PlayerStats))]
+    [RequireComponent(typeof(PlayerVoice))]
     public class PlayerControl : MonoBehaviour
     {
         private CharacterController _controller;
         private PlayerStats _stats;
+        private PlayerVoice _voice;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private Camera closedCamera;
         [SerializeField] private SpriteRenderer face;
+        [SerializeField] private GameObject sound;
 
         private void Start()
         {
             _controller = GetComponent<CharacterController>();
             _stats = GetComponent<PlayerStats>();
+            _voice = GetComponent<PlayerVoice>();
             PlayerCondition.eyesClosed = false;
             PlayerCondition.earsHeld = false;
             PlayerCondition.moving = false;
@@ -59,9 +63,13 @@ namespace MakeMeLaugh.Scripts
                 _controller.SimpleMove(_stats.speed * direction.normalized);
                 transform.rotation = Quaternion.LookRotation(direction);
                 PlayerCondition.moving = true;
+                sound.SetActive(true);
             }
             else
+            {
                 PlayerCondition.moving = false;
+                sound.SetActive(false);
+            }
         }
 
         private void HoldEars()
@@ -118,6 +126,18 @@ namespace MakeMeLaugh.Scripts
             var currentLaughType = ConcludeLaughType(_stats.currentLaugh);
             if (currentLaughType > GameStats.lastResult.laughPeak)
                 GameStats.lastResult.laughPeak = currentLaughType;
+            switch (currentLaughType)
+            {
+                case GameStats.BattleResult.LaughType.Lol:
+                    _voice.Lol();
+                    break;
+                case GameStats.BattleResult.LaughType.Lofl:
+                    _voice.Lofl();
+                    break;
+                default:
+                    _voice.Laugh();
+                    break;
+            }
         }
 
         private GameStats.BattleResult.LaughType ConcludeLaughType(float laugh)
