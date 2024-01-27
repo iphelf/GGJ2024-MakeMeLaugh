@@ -2,7 +2,8 @@
 
 public class PlayerStats : MonoBehaviour
 {
-    public float currentHp = 100.0f;
-    public float maximumHp = 100.0f;
+    public float currentLaugh = 0.0f;
+    public float maximumLaugh = 300.0f;
+    public float laughAttenuation = 20.0f;
     public float speed = 5.0f;
 }

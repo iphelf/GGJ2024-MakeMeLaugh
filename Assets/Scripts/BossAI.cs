@@ -6,7 +6,6 @@ public class BossAI : MonoBehaviour
 {
     private Transform _opponent;
     [SerializeField] private AnimationCurve approachWeight = AnimationCurve.Linear(0.0f, 200.0f, 20.0f, 50.0f);
-    public float chaseProbability = 0.5f;
     [SerializeField] private AnimationCurve jokeWeight = AnimationCurve.Constant(0.0f, 20.0f, 50.0f);
     [SerializeField] private AnimationCurve actWeight = AnimationCurve.Constant(0.0f, 20.0f, 50.0f);
 

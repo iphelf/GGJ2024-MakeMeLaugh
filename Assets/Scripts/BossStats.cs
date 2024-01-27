@@ -22,5 +22,5 @@ public class BossStats : MonoBehaviour
     public float actDurationMin = 5.0f;
     public float actDurationMax = 10.0f;
     public float actDamageTick = 0.1f;
-    public float actDamagePerTick = 5.0f;
+    public float actDamagePerTick = 10.0f;
 }

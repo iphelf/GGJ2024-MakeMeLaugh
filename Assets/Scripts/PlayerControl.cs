@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour
             CloseEyes();
         if (Input.GetKeyUp(KeyCode.Space))
             OpenEyes();
+        DecreaseLaugh(_stats.laughAttenuation * Time.deltaTime);
     }
 
     private void HandleMovement()
@@ -66,22 +67,27 @@ public class PlayerControl : MonoBehaviour
         mainCamera.enabled = true;
     }
 
-    public void TakeTickleHit(float damage) => TakeDamage(damage);
+    public void TakeTickleHit(float damage) => IncreaseLaugh(damage);
 
     public void TakeJokeHit(float damage)
     {
         if (PlayerCondition.earsHeld) return;
-        TakeDamage(damage);
+        IncreaseLaugh(damage);
     }
 
     public void TakeActHit(float damage)
     {
         if (PlayerCondition.eyesClosed) return;
-        TakeDamage(damage);
+        IncreaseLaugh(damage);
     }
 
-    private void TakeDamage(float damage)
+    private void IncreaseLaugh(float laugh)
     {
-        _stats.currentHp = Mathf.Max(0.0f, _stats.currentHp - damage);
+        _stats.currentLaugh = Mathf.Min(_stats.maximumLaugh, _stats.currentLaugh + laugh);
+    }
+
+    private void DecreaseLaugh(float laugh)
+    {
+        _stats.currentLaugh = Mathf.Max(0.0f, _stats.currentLaugh - laugh);
     }
 }
