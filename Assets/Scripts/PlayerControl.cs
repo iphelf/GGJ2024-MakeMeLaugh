@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -8,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private PlayerStats _stats;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera closedCamera;
+    [SerializeField] private SpriteRenderer face;
 
     private void Start()
     {
@@ -31,6 +33,15 @@ public class PlayerControl : MonoBehaviour
             OpenEyes();
 
         DecreaseLaugh(_stats.laughAttenuation * Time.deltaTime);
+        face.sprite = ConcludeLaughType(_stats.currentLaugh)
+            switch
+            {
+                GameStats.BattleResult.LaughType.None => _stats.notLaughingSprite,
+                GameStats.BattleResult.LaughType.Normal => _stats.normalLaughSprite,
+                GameStats.BattleResult.LaughType.Lol => _stats.lolSprite,
+                GameStats.BattleResult.LaughType.Lofl => _stats.loflSprite,
+                _ => throw new ArgumentOutOfRangeException(),
+            };
         float currentGainRate = _stats.gainRate.Evaluate(_stats.currentLaugh);
         if (currentGainRate < 0.0f)
             GameStats.lastResult.laughingTime += Time.deltaTime;
@@ -109,13 +120,11 @@ public class PlayerControl : MonoBehaviour
 
     private GameStats.BattleResult.LaughType ConcludeLaughType(float laugh)
     {
-        return (laugh / _stats.maximumLaugh) switch
-        {
-            < 1.0f / 3.0f => GameStats.BattleResult.LaughType.None,
-            < 1.9f / 3.0f => GameStats.BattleResult.LaughType.Normal,
-            < 2.8f / 3.0f => GameStats.BattleResult.LaughType.Lol,
-            _ => GameStats.BattleResult.LaughType.Lofl,
-        };
+        float ratio = laugh / _stats.maximumLaugh;
+        if (ratio < _stats.normalLaughThreshold) return GameStats.BattleResult.LaughType.None;
+        if (ratio < _stats.lolThreshold) return GameStats.BattleResult.LaughType.Normal;
+        if (ratio < _stats.loflThreshold) return GameStats.BattleResult.LaughType.Lol;
+        return GameStats.BattleResult.LaughType.Lofl;
     }
 
     private void DecreaseLaugh(float laugh)
