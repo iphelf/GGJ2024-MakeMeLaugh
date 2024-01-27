@@ -134,7 +134,7 @@ namespace MakeMeLaugh.Scripts
                 case GameStats.BattleResult.LaughType.Lofl:
                     _voice.Lofl();
                     break;
-                default:
+                case GameStats.BattleResult.LaughType.Normal:
                     _voice.Laugh();
                     break;
             }

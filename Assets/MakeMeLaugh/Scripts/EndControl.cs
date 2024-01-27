@@ -11,6 +11,12 @@ namespace MakeMeLaugh.Scripts
         private void Start()
         {
             GameStats.BattleResult result = GameStats.lastResult;
+            // GameStats.BattleResult result = new()
+            // {
+            //     laughCount = 1,
+            //     laughingTime = 30.12345f,
+            //     score = 12300.12345f
+            // };
 
             title.text = ComposeTitle(result);
             subtitle.text = ComposeSubtitle(result);
@@ -36,8 +42,8 @@ namespace MakeMeLaugh.Scripts
                 return "You didn't laugh.\n** Sigh **\nWell done.";
             string main =
                 result.laughCount == 1
-                    ? "You laughed once."
-                    : $"You laughed {result.laughCount} times.";
+                    ? $"You laughed once for {result.laughingTime:0.0} seconds."
+                    : $"You laughed {result.laughCount} times for {result.laughingTime:0.0} seconds.";
             return result.laughPeak switch
             {
                 GameStats.BattleResult.LaughType.Lol => $"LOL\n{main}",

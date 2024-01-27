@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace MakeMeLaugh.Scripts
 {
@@ -20,7 +19,6 @@ namespace MakeMeLaugh.Scripts
 
         public int StartNew()
         {
-            Debug.Log(nameof(StartNew));
             AudioClip clip = clips[Random.Range(0, clips.Count)];
             _audio.clip = clip;
             Volume = 1.0f;
@@ -46,7 +44,6 @@ namespace MakeMeLaugh.Scripts
 
         public void FadeOut(int id)
         {
-            Debug.Log(nameof(FadeOut));
             if (id < _currentVoiceId) return;
             _fadingVoiceId = id;
             _remainingTime = FadeOutDuration;
