@@ -21,7 +21,7 @@ public class UIControl : MonoBehaviour
     {
         currentScore.text = Mathf.RoundToInt(playerStats.currentScore).ToString();
         laughBar.value = playerStats.currentLaugh;
-        bestScore.text = Mathf.RoundToInt(GameStats.bestScore).ToString();
+        bestScore.text = GameStats.bestScore.ToString();
         remainingTime.text = Mathf.RoundToInt(battleStats.remainingTime).ToString();
     }
 

@@ -31,7 +31,11 @@ public class PlayerControl : MonoBehaviour
             OpenEyes();
 
         DecreaseLaugh(_stats.laughAttenuation * Time.deltaTime);
-        _stats.currentScore += _stats.gainRate.Evaluate(_stats.currentLaugh) * Time.deltaTime;
+        float currentGainRate = _stats.gainRate.Evaluate(_stats.currentLaugh);
+        if (currentGainRate < 0.0f)
+            GameStats.lastResult.laughingTime += Time.deltaTime;
+        _stats.currentScore += currentGainRate * Time.deltaTime;
+        GameStats.lastResult.score = _stats.currentScore;
     }
 
     private void HandleMovement()
@@ -91,7 +95,27 @@ public class PlayerControl : MonoBehaviour
 
     private void IncreaseLaugh(float laugh)
     {
+        float lastGainRate = _stats.gainRate.Evaluate(_stats.currentLaugh);
+
         _stats.currentLaugh = Mathf.Min(_stats.maximumLaugh, _stats.currentLaugh + laugh);
+
+        float currentGainRate = _stats.gainRate.Evaluate(_stats.currentLaugh);
+        if (lastGainRate > 0.0f && currentGainRate <= 0.0f)
+            ++GameStats.lastResult.laughCount;
+        var currentLaughType = ConcludeLaughType(_stats.currentLaugh);
+        if (currentLaughType > GameStats.lastResult.laughPeak)
+            GameStats.lastResult.laughPeak = currentLaughType;
+    }
+
+    private GameStats.BattleResult.LaughType ConcludeLaughType(float laugh)
+    {
+        return (laugh / _stats.maximumLaugh) switch
+        {
+            < 1.0f / 3.0f => GameStats.BattleResult.LaughType.None,
+            < 1.9f / 3.0f => GameStats.BattleResult.LaughType.Normal,
+            < 2.8f / 3.0f => GameStats.BattleResult.LaughType.Lol,
+            _ => GameStats.BattleResult.LaughType.Lofl,
+        };
     }
 
     private void DecreaseLaugh(float laugh)

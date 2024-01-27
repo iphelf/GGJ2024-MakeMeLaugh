@@ -9,6 +9,7 @@ public class BattleControl : MonoBehaviour
     {
         _stats = GetComponent<BattleStats>();
         _stats.remainingTime = _stats.duration;
+        GameStats.lastResult = new GameStats.BattleResult();
     }
 
     private void Update()
