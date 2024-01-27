@@ -9,6 +9,8 @@ namespace MakeMeLaugh.Scripts
         private AudioSource _audio;
         [SerializeField] private AudioResource _huh;
         [SerializeField] private AudioResource _hmmm;
+        [SerializeField] private GameObject mainPanel;
+        [SerializeField] private GameObject helpPanel;
 
         private void Start()
         {
@@ -41,6 +43,22 @@ namespace MakeMeLaugh.Scripts
         public void Quit()
         {
             GameControl.QuitGame();
+        }
+
+        public void Help()
+        {
+            helpPanel.SetActive(true);
+            mainPanel.SetActive(false);
+        }
+
+        public void BackFromHelp()
+        {
+            mainPanel.SetActive(true);
+            helpPanel.SetActive(false);
+        }
+
+        public void Credit()
+        {
         }
     }
 }
