@@ -6,4 +6,9 @@ public class EntryControl : MonoBehaviour
     {
         GameControl.OpenBattle();
     }
+
+    public void Quit()
+    {
+        GameControl.QuitGame();
+    }
 }

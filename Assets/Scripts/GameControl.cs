@@ -1,4 +1,5 @@
-﻿using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GameControl
 {
@@ -15,5 +16,10 @@ public static class GameControl
     public static void OpenEntry()
     {
         SceneManager.LoadScene("Entry");
+    }
+
+    public static void QuitGame()
+    {
+        Application.Quit();
     }
 }
