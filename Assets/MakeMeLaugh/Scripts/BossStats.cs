@@ -15,7 +15,7 @@ namespace MakeMeLaugh.Scripts
         public float chasingDurationMax = 8.0f;
         [Header("Joking")] public JokesBankSo jokes;
         public float jokeDamage = 150.0f;
-        public float jokeSpeed = 5.0f;
+        public float jokeSpeed = 8.0f;
         public float jokeTokenSpace = 0.1f;
         public GameObject jokeTokenPrefab;
         public float jokePreparationTime = 0.5f;
