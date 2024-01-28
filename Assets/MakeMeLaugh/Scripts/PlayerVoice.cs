@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace MakeMeLaugh.Scripts
 {
     [RequireComponent(typeof(AudioSource))]
     public class PlayerVoice : MonoBehaviour
     {
-        [SerializeField] private List<AudioClip> l1Laughs = new();
-        [SerializeField] private List<AudioClip> l2Laughs = new();
-        [SerializeField] private List<AudioClip> l3Laughs = new();
+        [SerializeField] private AudioResource l1Laugh;
+        [SerializeField] private AudioResource l2Laugh;
+        [SerializeField] private AudioResource l3Laugh;
         private AudioSource _audio;
 
         private void Start()
@@ -19,24 +19,24 @@ namespace MakeMeLaugh.Scripts
         public void Laugh()
         {
             if (_audio.isPlaying) return;
-            Play(l1Laughs[Random.Range(0, l1Laughs.Count)]);
+            Play(l1Laugh);
         }
 
         public void Lol()
         {
             if (_audio.isPlaying) return;
-            Play(l2Laughs[Random.Range(0, l2Laughs.Count)]);
+            Play(l2Laugh);
         }
 
         public void Lofl()
         {
             if (_audio.isPlaying) return;
-            Play(l3Laughs[Random.Range(0, l3Laughs.Count)]);
+            Play(l3Laugh);
         }
 
-        private void Play(AudioClip clip)
+        private void Play(AudioResource resource)
         {
-            _audio.clip = clip;
+            _audio.resource = resource;
             _audio.Play();
         }
     }

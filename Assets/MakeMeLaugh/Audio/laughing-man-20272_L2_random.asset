@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-6407612986217248719
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_4_{-6407612986217248719}
+  m_AudioClip: {fileID: 8300000, guid: b13ef6b80aedaa348a2c70bb7df50235, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-2622869286104575385
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_1_{-2622869286104575385}
+  m_AudioClip: {fileID: 8300000, guid: 14ce3e81263307945888e4bcb9f92ad6, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &334577143699041419
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_6_{334577143699041419}
+  m_AudioClip: {fileID: 8300000, guid: 6d555ad3e54c2d8478ae4fe2800d0d0e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &900058826277669821
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_2_{900058826277669821}
+  m_AudioClip: {fileID: 8300000, guid: 0c26e2fecf3cedc4e89a1e1023aa97e8, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1579116206723708781
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_7_{1579116206723708781}
+  m_AudioClip: {fileID: 8300000, guid: bd02d638e8279334eae48cfa9eb7d6c9, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2439698963091072135
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_5_{2439698963091072135}
+  m_AudioClip: {fileID: 8300000, guid: 76b7d4092d9209640a177875da8b6552, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2537201194093377033
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_3_{2537201194093377033}
+  m_AudioClip: {fileID: 8300000, guid: 1887d3e228ab108499936549df28a646, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laughing-man-20272_L2_random
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -2622869286104575385}
+  - {fileID: 900058826277669821}
+  - {fileID: 2537201194093377033}
+  - {fileID: -6407612986217248719}
+  - {fileID: 2439698963091072135}
+  - {fileID: 334577143699041419}
+  - {fileID: 1579116206723708781}
+  m_AvoidRepeatingLast: 3
+  m_PlaybackMode: 2
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 1
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
